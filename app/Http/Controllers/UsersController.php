@@ -13,6 +13,12 @@ use App\Profile;
 
 class UsersController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -105,6 +111,36 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        
+        $user->profile->delete();
+        $user->delete();
+        Session::flash('success','User deleted successfully');
+        
+        return redirect()->back();
+    }
+    
+    public function admin($id)
+    {
+        $user = User::find($id);
+        
+        $user->admin = 1;
+        
+        $user->save();
+        
+        Session::flash('success', 'Permission changed as admin');
+        
+        return redirect()->back();
+        
+    }
+    
+    public function not_admin($id)
+    {
+        $user = User::find($id);
+        
+        $user->admin = 0;
+        $user->save();
+        Session::flash('success', 'Permission removed');        
+        return redirect()->back();
     }
 }

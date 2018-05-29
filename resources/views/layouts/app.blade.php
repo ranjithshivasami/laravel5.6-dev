@@ -74,8 +74,11 @@
                 <div class="row">
                     @if(Auth::check())
                      <div class="col-lg-4"><ul class="list-group">
-                        <li class="list-group-item"><a href="/home">Dashboard</a></li>
-                        <li class="list-group-item"><a href="{{route('users')}}">Users</a></li>
+                        <li class="list-group-item"><a href="/home">Dashboard</a></li>                        
+                        @if(Auth::user()->admin)
+                            <li class="list-group-item"><a href="{{route('users')}}">Users</a></li>
+                        @endif
+                        <li class="list-group-item"><a href="{{route('user.profile')}}">My Profile</a></li>                                                
                         <li class="list-group-item"><a href="{{route('posts')}}">Post</a></li>
                         <li class="list-group-item"><a href="{{route('categories')}}">Category</a></li>
                         <li class="list-group-item"><a href="{{route('tags')}}">Tag</a></li>

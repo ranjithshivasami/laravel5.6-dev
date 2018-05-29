@@ -135,9 +135,31 @@ Route::group(['middleware' => 'auth'], function() {
         'as' => 'user.edit'
     ]);
     
+       Route::get('user/delete/{id}', [
+        'uses' => 'UsersController@destroy',
+        'as' => 'user.delete'
+    ]);
+    
     Route::post('user/update/{id}',[
         'uses' => 'UsersController@update',
         'as' => 'user.update'
     ]);
+    
+    Route::get('user/profile',[
+       'uses' => 'ProfilesController@index',
+        'as' => 'user.profile'
+    ]);
+       Route::post('profile/update',[
+       'uses' => 'ProfilesController@update',
+        'as' => 'profile.update'
+    ]);
+     Route::get('user/admin/{id}',[
+        'uses' => 'UsersController@admin',
+        'as' => 'user.admin'
+    ])->middleware('admin');
+      Route::get('user/not-admin/{id}',[
+        'uses' => 'UsersController@not_admin',
+        'as' => 'user.not-admin'
+    ])->middleware('admin');
 });
 

@@ -21,12 +21,16 @@
                         <td>{{$user->name}}</td>
                         <td>
                             @if($user->admin)
-                                <a href="" class="btn btn-primary btn-sm">Remove permission</a>
+                                <a href="{{route('user.not-admin',['id' => $user->id])}}" class="btn btn-primary btn-sm">Remove permission</a>
                             @else
-                                <a href="" class="btn btn-primary btn-sm">Make Admin</a>
+                                <a href="{{route('user.admin',['id' => $user->id])}}" class="btn btn-primary btn-sm">Make Admin</a>
                             @endif
                         </td>
-                        <td></td>
+                        <td>
+                            @if(Auth::user()->id !== $user->id)
+                                <a href="{{route('user.delete',['id' => $user->id])}}" class="btn btn-danger btn-sm">Delete</a>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
                 
