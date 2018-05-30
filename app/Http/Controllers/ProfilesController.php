@@ -88,8 +88,8 @@ class ProfilesController extends Controller
         
         if($request->hasFile('avatar')){
             $avatar = $request->avatar;            
-            $avatar_new_name = 'upoads/avatar/' . time().$avatar->getClientOriginalName();            
-            $avatar->move('upoads/avatar/', $avatar_new_name); 
+            $avatar_new_name = 'uploads/avatar/' . time().$avatar->getClientOriginalName();            
+            $avatar->move('uploads/avatar/', $avatar_new_name); 
              $user->profile->avatar = $avatar_new_name;
             $user->profile->save();
         }
