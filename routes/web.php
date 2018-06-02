@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//https://www.aurawellnesscenter.com/store/category/*
+Route::get('/store/category', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -161,5 +165,16 @@ Route::group(['middleware' => 'auth'], function() {
         'uses' => 'UsersController@not_admin',
         'as' => 'user.not-admin'
     ])->middleware('admin');
+      
+    Route::get('/settings',[
+        'uses' => 'SettingsController@index',
+        'as' => 'settings.edit'
+    ])->middleware('admin');
+    
+      Route::post('/settings/update',[
+        'uses' => 'SettingsController@update',
+        'as' => 'settings.update'
+    ])->middleware('admin');
+    
 });
 

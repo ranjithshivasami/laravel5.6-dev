@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="password" name="password" value="{{$user->password}}" class="form-control" />
+                <input type="password" autocomplete="off" name="password" value="" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="avatar">Avatar</label>

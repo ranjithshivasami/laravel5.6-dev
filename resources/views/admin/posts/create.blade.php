@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('style')
+
+@stop
 @section('content')
 @include('admin.includes.error')
 <div class="card">
@@ -34,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea name="content" id="" cols="30" rows="2" class="form-control"></textarea>
+                <textarea name="content" id="content"  cols="30" rows="2" class="textarea form-control"></textarea>
             </div>
             <div class="form-group">
                 <div class="text-center">
@@ -45,4 +48,11 @@
     </div>
 </div>
 @stop()
-
+@section('scripts')
+  <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>        
+        $('.textarea').ckeditor(); // if class is prefered.
+    </script>
+ 
+@stop()

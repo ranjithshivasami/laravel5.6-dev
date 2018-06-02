@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
      <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -83,6 +83,7 @@
                         <li class="list-group-item"><a href="{{route('posts')}}">Post</a></li>
                         <li class="list-group-item"><a href="{{route('categories')}}">Category</a></li>
                         <li class="list-group-item"><a href="{{route('tags')}}">Tag</a></li>
+                        <li class="list-group-item"><a href="{{route('settings.edit')}}">Edit Settings</a></li>
                     </ul></div>
                     @endif                   
                     <div class="col-lg-8">@yield('content')</div>
