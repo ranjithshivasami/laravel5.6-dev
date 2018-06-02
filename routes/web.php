@@ -11,9 +11,10 @@
   |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ Route::get('/', [
+        'uses' => 'FrontEndController@index',
+        'as' => 'frontend'
+    ]);
 //https://www.aurawellnesscenter.com/store/category/*
 Route::get('/store/category', function () {
     return view('welcome');
