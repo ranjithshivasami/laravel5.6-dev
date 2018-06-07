@@ -24,6 +24,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/post/{slug}',[
+    'uses' => 'FrontEndController@singlePage',
+    'as' => 'post.single'
+]);
+
   Route::get('/test',function(){
       return App\Category::find(2)->posts;
   });

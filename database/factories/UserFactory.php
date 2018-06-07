@@ -1,6 +1,15 @@
 <?php
 
-use Faker\Generator as Faker;
+use Faker\Generator as Faker;$factory->define(App\TestData::class, function (Faker $faker) {
+    return [        
+        'firstname' => $faker->firstName,        
+        'lastname' => $faker->lastName, 
+        'address' => $faker->address,
+        'postalcode' => $faker->postcode,
+        'city' => $faker->city,
+        'mobile' => $faker->mobileNumber
+    ];
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +30,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+
 
 
