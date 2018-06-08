@@ -52,7 +52,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>                                    
-                                        <a href="#">{{$post->category->name}}</a>                                    
+                                        <a href="{{route('category.single', ['id' => $post->category->id])}}">{{$post->category->name}}</a>                                    
                             </span>
 
                         </div>
@@ -64,7 +64,7 @@
                             <div class="widget w-tags">
                                 <div class="tags-wrap">
                                      @foreach($post->tags as $tag)
-                                        <a href="#" class="w-tags-item">{{$tag->tag}}</a>
+                                        <a href="{{route('tag.single', ['id' => $tag->id])}}" class="w-tags-item">{{$tag->tag}}</a>
                                     @endforeach                                   
                                 </div>
                             </div>
@@ -95,16 +95,15 @@
                 <div class="blog-details-author">
 
                     <div class="blog-details-author-thumb">
-                        <img src="app/img/blog-details-author.png" alt="Author">
+                        <img src="{{asset($post->user->profile->avatar)}}" width="100" height="100" alt="Author">
                     </div>
 
                     <div class="blog-details-author-content">
                         <div class="author-info">
-                            <h5 class="author-name">Philip Demarco</h5>
+                            <h5 class="author-name">{{$post->user->name}}</h5>
                             <p class="author-info">SEO Specialist</p>
                         </div>
-                        <p class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                            nonummy nibh euismod.
+                        <p class="text">{{$post->user->profile->about}}
                         </p>
                         <div class="socials">
 
@@ -154,7 +153,7 @@
                 </div>
 
                 <div class="comments">
-
+                           
                     <div class="heading text-center">
                         <h4 class="h1 heading-title">Comments</h4>
                         <div class="heading-line">
@@ -162,6 +161,7 @@
                             <span class="long-line"></span>
                         </div>
                     </div>
+                    @include('includes.disqus')
                 </div>
 
                 <div class="row">
@@ -187,15 +187,9 @@
                         </div>
 
                         <div class="tags-wrap">
-                            <a href="#" class="w-tags-item">SEO</a>
-                            <a href="#" class="w-tags-item">Advertising</a>
-                            <a href="#" class="w-tags-item">Business</a>
-                            <a href="#" class="w-tags-item">Optimization</a>
-                            <a href="#" class="w-tags-item">Digital Marketing</a>
-                            <a href="#" class="w-tags-item">Social</a>
-                            <a href="#" class="w-tags-item">Keyword</a>
-                            <a href="#" class="w-tags-item">Strategy</a>
-                            <a href="#" class="w-tags-item">Audience</a>
+                            @foreach($tags as $tag)
+                            <a href="{{route('tag.single', ['id' => $tag->id])}}" class="w-tags-item">{{$tag->tag}}</a>
+                            @endforeach
                         </div>
                     </div>
                 </aside>

@@ -29,9 +29,19 @@ Route::get('/post/{slug}',[
     'as' => 'post.single'
 ]);
 
-  Route::get('/test',function(){
-      return App\Category::find(2)->posts;
-  });
+Route::get('/category/{id}',[
+    'uses' => 'FrontEndController@category',
+    'as' => 'category.single'
+]);
+
+Route::get('/tag/{id}',[
+    'uses' => 'FrontEndController@tag',
+    'as' => 'tag.single'
+]);
+
+Route::get('/test',function(){
+    return App\Category::find(2)->posts;
+});
 
 
 Route::group(['middleware' => 'auth'], function() {
